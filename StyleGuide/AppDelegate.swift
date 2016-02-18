@@ -13,34 +13,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+
+        let window = UIWindow()
+        let elementsVC = ElementsViewController(withElements: [
+            UILibraryElement(
+                title: "Go Button",
+                example: {
+                    let elaborateButton = UIButton(type: .Custom)
+                    elaborateButton.setTitle("Press Me", forState: .Normal)
+                    elaborateButton.backgroundColor = UIColor(red: 0.2, green: 0.8, blue: 0.2, alpha: 1)
+                    elaborateButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+                    elaborateButton.layer.cornerRadius = 10
+                    elaborateButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+                    return elaborateButton
+                }
+            ),
+            UILibraryElement(
+                title: "Card",
+                example: {
+                    let card = Card()
+                    card.titleLabel.text = "Mr. Stephen Colbert"
+                    card.detailsLabel.text = "Quite the person"
+                    card.masterTextView.text = "Colbert had originally studied to be an actor, but became interested in improvisational theatre when he met Second City director Del Close while attending Northwestern University. He first performed professionally as an understudy for Steve Carell at Second City Chicago; among his troupe mates were comedians Paul Dinello and Amy Sedaris, with whom he developed the sketch comedy series Exit 57. Colbert also wrote and performed on the short-lived Dana Carvey Show before collaborating with Sedaris and Dinello again on the cult television series Strangers with Candy. He gained considerable attention for his role on the latter as closeted gay history teacher Chuck Noblet. His work as a correspondent on Comedy Central's news-parody series The Daily Show first introduced him to a wide audience."
+                    return card
+                },
+                detailedDescription: "Cards are good at showing information about a person. The are intended to show the name, title, picture, and a biography."
+            )
+        ])
+        window.rootViewController = UINavigationController(rootViewController: elementsVC)
+        window.makeKeyAndVisible()
+        self.window = window
+        
         return true
     }
-
-    func applicationWillResignActive(application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    }
-
-    func applicationDidEnterBackground(application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-
-    func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
-    func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
 
 }
 
