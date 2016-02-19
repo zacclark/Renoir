@@ -13,6 +13,7 @@
 		AEA8BFD51C755A7900DD0C90 /* ElementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8BFD41C755A7900DD0C90 /* ElementsViewController.swift */; };
 		AEA8BFD71C765F1900DD0C90 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8BFD61C765F1900DD0C90 /* Card.swift */; };
 		AEA8BFD91C76730500DD0C90 /* ElementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8BFD81C76730500DD0C90 /* ElementDetailViewController.swift */; };
+		AEA8BFDB1C76A7E400DD0C90 /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8BFDA1C76A7E400DD0C90 /* Guide.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		AEA8BFD41C755A7900DD0C90 /* ElementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementsViewController.swift; sourceTree = "<group>"; };
 		AEA8BFD61C765F1900DD0C90 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		AEA8BFD81C76730500DD0C90 /* ElementDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementDetailViewController.swift; sourceTree = "<group>"; };
+		AEA8BFDA1C76A7E400DD0C90 /* Guide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				AEA8BFD41C755A7900DD0C90 /* ElementsViewController.swift */,
 				AEA8BFD61C765F1900DD0C90 /* Card.swift */,
 				AEA8BFD81C76730500DD0C90 /* ElementDetailViewController.swift */,
+				AEA8BFDA1C76A7E400DD0C90 /* Guide.swift */,
 			);
 			path = StyleGuide;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			files = (
 				AEA8BFD91C76730500DD0C90 /* ElementDetailViewController.swift in Sources */,
 				AEA8BFC31C755A2200DD0C90 /* AppDelegate.swift in Sources */,
+				AEA8BFDB1C76A7E400DD0C90 /* Guide.swift in Sources */,
 				AEA8BFD71C765F1900DD0C90 /* Card.swift in Sources */,
 				AEA8BFD51C755A7900DD0C90 /* ElementsViewController.swift in Sources */,
 			);

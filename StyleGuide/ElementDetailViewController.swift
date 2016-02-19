@@ -5,7 +5,6 @@ class ElementDetailViewController: UIViewController {
     let element: UILibraryElement
     let elementView: UIView
     let slider: UISlider
-    let widthLabel: UILabel
     var widthConstraint: NSLayoutConstraint?
     var borderLeftConstraint: NSLayoutConstraint?
     
@@ -13,16 +12,21 @@ class ElementDetailViewController: UIViewController {
     let rightBorder: UIView
     let tempBorder: UIView
     
+    let fullGuide: Guide
+    let innerGuide: Guide
+    
     init(element: UILibraryElement) {
         self.element = element
         
         slider = UISlider()
-        widthLabel = UILabel()
         elementView = element.example()
         
         leftBorder = UIView()
         rightBorder = UIView()
         tempBorder = UIView()
+        
+        fullGuide = Guide()
+        innerGuide = Guide()
         
         super.init(nibName: nil, bundle: nil)
         self.title = element.title
@@ -44,25 +48,24 @@ class ElementDetailViewController: UIViewController {
         slider.addTarget(self, action: "sliderTouchEnd:", forControlEvents: .TouchUpInside)
         slider.addTarget(self, action: "sliderTouchEnd:", forControlEvents: .TouchUpOutside)
         
-        widthLabel.textAlignment = .Center
-        widthLabel.font = UIFont.monospacedDigitSystemFontOfSize(40, weight: UIFontWeightRegular)
-        
         let subviews = [
-            "wl": widthLabel,
             "slider": slider,
             "e": elementView,
             "lb": leftBorder,
             "rb": rightBorder,
             "tb": tempBorder,
+            "fg": fullGuide,
+            "ig": innerGuide,
         ]
         for s in subviews.values {
             s.translatesAutoresizingMaskIntoConstraints = false
             self.view.addSubview(s)
         }
 
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-80-[wl]-10-[slider]-10-[e]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: subviews))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-80-[fg]-5-[ig]-10-[slider]-10-[e]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: subviews))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[slider]-10-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: subviews))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[wl]-10-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: subviews))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[lb]-0-[fg]-6-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: subviews))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[lb]-0-[ig]-0-[rb]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: subviews))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[e]-(>=0)-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: subviews))
         
         for border in [leftBorder, rightBorder, tempBorder] {
@@ -84,7 +87,6 @@ class ElementDetailViewController: UIViewController {
             slider.minimumValue = Float(slider.currentThumbImage?.size.width ?? 31)
             slider.maximumValue = Float(slider.bounds.size.width)
             slider.value = slider.maximumValue
-            updateWidthLabel(slider.value)
         }
         
         if self.widthConstraint == nil {
@@ -96,7 +98,6 @@ class ElementDetailViewController: UIViewController {
     
     func sliderUpdated(sender: UISlider) {
         if let bc = borderLeftConstraint {
-            updateWidthLabel(sender.value)
             bc.constant = CGFloat(sender.value)
             
         }
@@ -108,12 +109,6 @@ class ElementDetailViewController: UIViewController {
             wc.constant = v
             bc.constant = v
         }
-    }
-    
-    func updateWidthLabel(width: Float) {
-        let rounded = Int(round(width))
-        let formatted = NSString(format: "%03i", rounded)
-        widthLabel.text = "\(formatted)px"
     }
     
 }

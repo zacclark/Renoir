@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let window = UIWindow()
         let elementsVC = ElementsViewController(withElements: [
+            
             UILibraryElement(
                 title: "Go Button",
                 example: {
@@ -40,7 +41,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     return card
                 },
                 detailedDescription: "Cards are good at showing information about a person. The are intended to show the name, title, picture, and a biography."
-            )
+            ),
+            UILibraryElement(
+                title: "Basic Spinner",
+                example: {
+                    let s = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+                    s.startAnimating()
+                    return s
+                }
+            ),
+            
         ])
         window.rootViewController = UINavigationController(rootViewController: elementsVC)
         window.makeKeyAndVisible()
