@@ -1,7 +1,7 @@
 import UIKit
 
 class Card : UIView {
-    let imageArea: UIView
+    let imageArea: UIImageView
     let titleLabel: UILabel
     let detailsLabel: UILabel
     
@@ -16,8 +16,8 @@ class Card : UIView {
     let masterTextView: UITextView
     
     init() {
-        imageArea = UIView()
-        imageArea.backgroundColor = UIColor.grayColor()
+        imageArea = UIImageView()
+        imageArea.contentMode = .ScaleAspectFill
         
         titleLabel = UILabel()
         titleLabel.font = UIFont.boldSystemFontOfSize(16)
