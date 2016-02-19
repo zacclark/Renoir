@@ -5,6 +5,7 @@ class ElementDetailViewController: UIViewController {
     let element: UILibraryElement
     let elementView: UIView
     let slider: UISlider
+    let widthLabel: UILabel
     var widthConstraint: NSLayoutConstraint?
     var borderLeftConstraint: NSLayoutConstraint?
     
@@ -16,6 +17,7 @@ class ElementDetailViewController: UIViewController {
         self.element = element
         
         slider = UISlider()
+        widthLabel = UILabel()
         elementView = element.example()
         
         leftBorder = UIView()
@@ -42,7 +44,11 @@ class ElementDetailViewController: UIViewController {
         slider.addTarget(self, action: "sliderTouchEnd:", forControlEvents: .TouchUpInside)
         slider.addTarget(self, action: "sliderTouchEnd:", forControlEvents: .TouchUpOutside)
         
+        widthLabel.textAlignment = .Center
+        widthLabel.font = UIFont.monospacedDigitSystemFontOfSize(40, weight: UIFontWeightRegular)
+        
         let subviews = [
+            "wl": widthLabel,
             "slider": slider,
             "e": elementView,
             "lb": leftBorder,
@@ -54,8 +60,9 @@ class ElementDetailViewController: UIViewController {
             self.view.addSubview(s)
         }
 
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-80-[slider]-10-[e]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: subviews))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-80-[wl]-10-[slider]-10-[e]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: subviews))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[slider]-10-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: subviews))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[wl]-10-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: subviews))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[e]-(>=0)-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: subviews))
         
         for border in [leftBorder, rightBorder, tempBorder] {
@@ -74,8 +81,10 @@ class ElementDetailViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         if slider.maximumValue != Float(slider.bounds.size.width) {
+            slider.minimumValue = Float(slider.currentThumbImage?.size.width ?? 31)
             slider.maximumValue = Float(slider.bounds.size.width)
             slider.value = slider.maximumValue
+            updateWidthLabel(slider.value)
         }
         
         if self.widthConstraint == nil {
@@ -87,8 +96,9 @@ class ElementDetailViewController: UIViewController {
     
     func sliderUpdated(sender: UISlider) {
         if let bc = borderLeftConstraint {
-            let v = CGFloat(sender.value)
-            bc.constant = v
+            updateWidthLabel(sender.value)
+            bc.constant = CGFloat(sender.value)
+            
         }
     }
     
@@ -98,6 +108,12 @@ class ElementDetailViewController: UIViewController {
             wc.constant = v
             bc.constant = v
         }
+    }
+    
+    func updateWidthLabel(width: Float) {
+        let rounded = Int(round(width))
+        let formatted = NSString(format: "%03i", rounded)
+        widthLabel.text = "\(formatted)px"
     }
     
 }
