@@ -1,6 +1,11 @@
 public struct InterfaceElementVariant {
     let title: String
     let generator: Void -> UIView
+    
+    public init(title: String, generator: Void -> UIView) {
+        self.title = title
+        self.generator = generator
+    }
 }
 
 public struct InterfaceElement {

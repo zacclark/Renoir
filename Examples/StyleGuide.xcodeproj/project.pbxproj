@@ -7,25 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE36B5A01CA0D3F3004F4914 /* Renoir.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE36B59F1CA0D3F3004F4914 /* Renoir.framework */; };
 		AEA8BFC31C755A2200DD0C90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8BFC21C755A2200DD0C90 /* AppDelegate.swift */; };
 		AEA8BFCA1C755A2200DD0C90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEA8BFC91C755A2200DD0C90 /* Assets.xcassets */; };
 		AEA8BFCD1C755A2200DD0C90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEA8BFCB1C755A2200DD0C90 /* LaunchScreen.storyboard */; };
-		AEA8BFD51C755A7900DD0C90 /* ElementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8BFD41C755A7900DD0C90 /* ElementsViewController.swift */; };
 		AEA8BFD71C765F1900DD0C90 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8BFD61C765F1900DD0C90 /* Card.swift */; };
-		AEA8BFD91C76730500DD0C90 /* ElementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8BFD81C76730500DD0C90 /* ElementDetailViewController.swift */; };
-		AEA8BFDB1C76A7E400DD0C90 /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA8BFDA1C76A7E400DD0C90 /* Guide.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AE36B59F1CA0D3F3004F4914 /* Renoir.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Renoir.framework; path = "../build/Debug-iphoneos/Renoir.framework"; sourceTree = "<group>"; };
 		AEA8BFBF1C755A2200DD0C90 /* StyleGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StyleGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEA8BFC21C755A2200DD0C90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEA8BFC91C755A2200DD0C90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AEA8BFCC1C755A2200DD0C90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AEA8BFCE1C755A2200DD0C90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AEA8BFD41C755A7900DD0C90 /* ElementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementsViewController.swift; sourceTree = "<group>"; };
 		AEA8BFD61C765F1900DD0C90 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		AEA8BFD81C76730500DD0C90 /* ElementDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementDetailViewController.swift; sourceTree = "<group>"; };
-		AEA8BFDA1C76A7E400DD0C90 /* Guide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE36B5A01CA0D3F3004F4914 /* Renoir.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +39,7 @@
 		AEA8BFB61C755A2200DD0C90 = {
 			isa = PBXGroup;
 			children = (
+				AE36B59F1CA0D3F3004F4914 /* Renoir.framework */,
 				AEA8BFC11C755A2200DD0C90 /* StyleGuide */,
 				AEA8BFC01C755A2200DD0C90 /* Products */,
 			);
@@ -62,10 +60,7 @@
 				AEA8BFC91C755A2200DD0C90 /* Assets.xcassets */,
 				AEA8BFCB1C755A2200DD0C90 /* LaunchScreen.storyboard */,
 				AEA8BFCE1C755A2200DD0C90 /* Info.plist */,
-				AEA8BFD41C755A7900DD0C90 /* ElementsViewController.swift */,
 				AEA8BFD61C765F1900DD0C90 /* Card.swift */,
-				AEA8BFD81C76730500DD0C90 /* ElementDetailViewController.swift */,
-				AEA8BFDA1C76A7E400DD0C90 /* Guide.swift */,
 			);
 			path = StyleGuide;
 			sourceTree = "<group>";
@@ -140,11 +135,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEA8BFD91C76730500DD0C90 /* ElementDetailViewController.swift in Sources */,
 				AEA8BFC31C755A2200DD0C90 /* AppDelegate.swift in Sources */,
-				AEA8BFDB1C76A7E400DD0C90 /* Guide.swift in Sources */,
 				AEA8BFD71C765F1900DD0C90 /* Card.swift in Sources */,
-				AEA8BFD51C755A7900DD0C90 /* ElementsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +278,7 @@
 				AEA8BFD31C755A2200DD0C90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
