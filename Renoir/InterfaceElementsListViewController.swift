@@ -63,11 +63,9 @@ class InterfaceElementsListViewController : UIViewController, UITableViewDataSou
         view.userInteractionEnabled = false
         view.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.addSubview(view)
-        cell.contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-(>=0)-[element]-(>=0)-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["element":view]))
-        cell.contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-(>=0)-[element]-(>=0)-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["element":view]))
-        NSLayoutConstraint(item: view, attribute: .CenterX, relatedBy: .Equal, toItem: cell.contentView, attribute: .CenterX, multiplier: 1, constant: 0).active = true
-        NSLayoutConstraint(item: view, attribute: .CenterY, relatedBy: .Equal, toItem: cell.contentView, attribute: .CenterY, multiplier: 1, constant: 0).active = true
-        
+        cell.contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[element]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["element":view]))
+        cell.contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[element]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["element":view]))
+
         return cell
     }
     

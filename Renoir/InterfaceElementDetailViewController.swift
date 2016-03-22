@@ -2,7 +2,6 @@ import UIKit
 
 class InterfaceElementDetailViewController : UIViewController {
     let element: InterfaceElement
-    let elementView: UIView
     let slider: UISlider
     var widthConstraint: NSLayoutConstraint?
     var borderLeftConstraint: NSLayoutConstraint?
@@ -14,11 +13,12 @@ class InterfaceElementDetailViewController : UIViewController {
     let fullGuide: Guide
     let innerGuide: Guide
     
+    var variantStack: UIStackView!
+    
     init(element: InterfaceElement) {
         self.element = element
         
         slider = UISlider()
-        elementView = element.principleVariant.generator()
         
         leftBorder = UIView()
         rightBorder = UIView()
@@ -47,9 +47,14 @@ class InterfaceElementDetailViewController : UIViewController {
         slider.addTarget(self, action: "sliderTouchEnd:", forControlEvents: .TouchUpInside)
         slider.addTarget(self, action: "sliderTouchEnd:", forControlEvents: .TouchUpOutside)
         
+        variantStack = UIStackView(arrangedSubviews: element.variants.map{$0.generator()})
+        variantStack.axis = .Vertical
+        variantStack.distribution = .Fill
+        variantStack.spacing = 20
+        
         let subviews = [
             "slider": slider,
-            "e": elementView,
+            "e": variantStack,
             "lb": leftBorder,
             "rb": rightBorder,
             "tb": tempBorder,
@@ -75,7 +80,7 @@ class InterfaceElementDetailViewController : UIViewController {
         
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[lb]-0-[e]-0-[rb]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: subviews))
         tempBorder.backgroundColor = UIColor.grayColor()
-        borderLeftConstraint = NSLayoutConstraint(item: tempBorder, attribute: .Leading, relatedBy: .Equal, toItem: elementView, attribute: .Leading, multiplier: 1, constant: 0)
+        borderLeftConstraint = NSLayoutConstraint(item: tempBorder, attribute: .Leading, relatedBy: .Equal, toItem: variantStack, attribute: .Leading, multiplier: 1, constant: 0)
         borderLeftConstraint?.active = true
     }
     
@@ -89,7 +94,7 @@ class InterfaceElementDetailViewController : UIViewController {
         }
         
         if self.widthConstraint == nil {
-            let widthConstraint = NSLayoutConstraint(item: elementView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: CGFloat(slider.value))
+            let widthConstraint = NSLayoutConstraint(item: variantStack, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: CGFloat(slider.value))
             self.widthConstraint = widthConstraint
             widthConstraint.active = true
         }
